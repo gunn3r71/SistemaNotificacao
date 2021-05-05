@@ -17,21 +17,31 @@ namespace SistemaNotificacao
             switch (opcao)
             {
                 case 1:
-                    Console.WriteLine($"Enviando email para cliente de código {codCliente}...");
-                    Console.WriteLine(".....Aguarde");
-                    Console.WriteLine($"Email enviado: {mensagem}");
-                    Console.WriteLine("Email Enviado com sucesso");
+                    EnviarEmail(codCliente, mensagem);
                     break;
                 case 2:
-                    Console.WriteLine($"Enviando mensagem para cliente de código {codCliente}...");
-                    Console.WriteLine(".....Aguarde");
-                    Console.WriteLine($"mensagem enviada: {mensagem}");
-                    Console.WriteLine("mensagem Enviada com sucesso");
+                    EnviarSms(codCliente, mensagem);
                     break;
                 default:
                     break;
             }
 
+        }
+
+        private static void EnviarSms(int codCliente, string mensagem)
+        {
+            Console.WriteLine($"Enviando mensagem para cliente de código {codCliente}...");
+            Console.WriteLine(".....Aguarde");
+            Console.WriteLine($"mensagem enviada: {mensagem}");
+            Console.WriteLine("mensagem Enviada com sucesso");
+        }
+
+        private static void EnviarEmail(int codCliente, string mensagem)
+        {
+            Console.WriteLine($"Enviando email para cliente de código {codCliente}...");
+            Console.WriteLine(".....Aguarde");
+            Console.WriteLine($"Email enviado: {mensagem}");
+            Console.WriteLine("Email Enviado com sucesso");
         }
     }
 }
