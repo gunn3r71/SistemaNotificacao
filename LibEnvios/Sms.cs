@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace LibEnvios
 {
-    public class Sms
+    public class Sms : Notificacao  
     {
-        public static void Enviar(int codCliente, string mensagem)
+        public override void Enviar(ConteudoNotificacao conteudo)
         {
-            Console.WriteLine($"Enviando mensagem para cliente de código {codCliente}...");
+            Console.WriteLine($"Enviando mensagem para cliente de código {conteudo.CodCliente}...");
             Console.WriteLine(".....Aguarde");
-            Console.WriteLine($"mensagem enviada: {mensagem}");
+            Console.WriteLine($"mensagem enviada: {conteudo.Mensagem}");
             Console.WriteLine("mensagem Enviada com sucesso");
         }
     }

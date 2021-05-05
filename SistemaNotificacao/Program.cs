@@ -1,32 +1,36 @@
 ﻿using LibEnvios;
+using SistemaNotificacao.Enums;
 using System;
 
 namespace SistemaNotificacao
 {
     class Program
     {
+        private static Notificacao notificacao;
         static void Main(string[] args)
         {
             Console.WriteLine("####Sistema de notificação####");
             Console.Write("Digite o código do cliente: ");
-            int codCliente = int.Parse(Console.ReadLine());
+            var codCliente = Console.ReadLine();
             Console.Write("Digite a mensagem a ser enviada: ");
-            string mensagem = Console.ReadLine();
+            var mensagem = Console.ReadLine();
             Console.WriteLine("Tipo de mensagem a ser enviada:\n1 Para Email\n2 Para Mensagem de texto");
-            int opcao = int.Parse(Console.ReadLine());
+            var opcao = Console.ReadLine();
 
-            switch (opcao)
+            var modoEnvio = (ModoEnvio)Enum.Parse(typeof(ModoEnvio), opcao);
+            switch (modoEnvio)
             {
-                case 1:
-                    Email.Enviar(codCliente, mensagem);
+                case ModoEnvio.Email:
+                    notificacao = new Email();
                     break;
-                case 2:
-                    Sms.Enviar(codCliente, mensagem);
+                case ModoEnvio.Sms:
+                    notificacao = new Sms();
                     break;
                 default:
                     break;
             }
 
+            notificacao.Enviar(new ConteudoNotificacao { CodCliente = codCliente, Mensagem = mensagem});
         }
     }
 }
