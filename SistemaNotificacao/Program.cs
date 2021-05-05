@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibEnvios;
+using System;
 
 namespace SistemaNotificacao
 {
@@ -17,31 +18,15 @@ namespace SistemaNotificacao
             switch (opcao)
             {
                 case 1:
-                    EnviarEmail(codCliente, mensagem);
+                    Email.Enviar(codCliente, mensagem);
                     break;
                 case 2:
-                    EnviarSms(codCliente, mensagem);
+                    Sms.Enviar(codCliente, mensagem);
                     break;
                 default:
                     break;
             }
 
-        }
-
-        private static void EnviarSms(int codCliente, string mensagem)
-        {
-            Console.WriteLine($"Enviando mensagem para cliente de código {codCliente}...");
-            Console.WriteLine(".....Aguarde");
-            Console.WriteLine($"mensagem enviada: {mensagem}");
-            Console.WriteLine("mensagem Enviada com sucesso");
-        }
-
-        private static void EnviarEmail(int codCliente, string mensagem)
-        {
-            Console.WriteLine($"Enviando email para cliente de código {codCliente}...");
-            Console.WriteLine(".....Aguarde");
-            Console.WriteLine($"Email enviado: {mensagem}");
-            Console.WriteLine("Email Enviado com sucesso");
         }
     }
 }
